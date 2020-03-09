@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.nematjon.socialapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_likes"
+        android:name="com.nematjon.socialapp.ui.likes.LikesFragment"
+        android:label="@string/title_likes"
+        tools:layout="@layout/fragment_likes" />
+
+    <fragment
+        android:id="@+id/navigation_dm"
+        android:name="com.nematjon.socialapp.ui.dm.DmFragment"
+        android:label="@string/title_dm"
+        tools:layout="@layout/fragment_dm" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.nematjon.socialapp.ui.dm.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_dm" />
+</navigation>
