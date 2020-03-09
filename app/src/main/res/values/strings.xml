@@ -13,4 +13,8 @@
     <string name="title_dm">DM</string>
     <string name="title_likes">Likes</string>
     <string name="title_profile">Profile</string>
+    <string name="gender">Gender</string>
+    <string name="birthday">Birthday</string>
+    <string name="location">Location</string>
+    <string name="tell_us_about_yourself">Tell us about yourself</string>
 </resources>
