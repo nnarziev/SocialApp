@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@+id/gender_pick_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/gender_pick_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <DatePicker
+        android:id="@+id/datepicker_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--<fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view" />-->
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -17,4 +17,8 @@
     <string name="birthday">Birthday</string>
     <string name="location">Location</string>
     <string name="tell_us_about_yourself">Tell us about yourself</string>
+
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

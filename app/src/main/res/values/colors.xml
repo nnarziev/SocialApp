@@ -8,4 +8,6 @@
     <color name="black">#000</color>
     <color name="grey">#ccc</color>
 
+    <color name="profile_info_txt_color">#EA1684</color>
+
 </resources>

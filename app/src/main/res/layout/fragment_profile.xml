@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,175 +8,186 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <LinearLayout
-        android:id="@+id/photos_view"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_marginBottom="20dp">
-
-        <ImageView
-            android:id="@+id/photo_1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="2dp"
-            android:layout_weight="2"
-            android:contentDescription="@string/title_profile"
-            android:src="@drawable/empty_photo" />
-
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:id="@+id/photos_view"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginBottom="20dp">
 
             <ImageView
-                android:id="@+id/photo_2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:src="@drawable/empty_photo"
-                android:contentDescription="@string/title_profile" />
+                android:id="@+id/photo_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="2"
+                android:contentDescription="@string/title_profile"
+                android:src="@drawable/empty_photo" />
 
-            <ImageView
-                android:id="@+id/photo_3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/empty_photo"
-                android:contentDescription="@string/title_profile" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/photo_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/empty_photo"
+                    android:contentDescription="@string/title_profile" />
+
+                <ImageView
+                    android:id="@+id/photo_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/empty_photo"
+                    android:contentDescription="@string/title_profile" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/grey" />
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/username"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/main_text_size" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="181dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="@string/username"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/profile_info_txt_color"
+                    android:textSize="@dimen/main_text_size" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/gender"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/main_text_size" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/gender"
+                    android:textColor="@color/profile_info_txt_color"
+                    android:textAlignment="viewEnd"
+                    android:textSize="@dimen/main_text_size" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/birthday"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/main_text_size" />
+
+                <TextView
+                    android:id="@+id/birthday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/birthday"
+                    android:textColor="@color/profile_info_txt_color"
+                    android:textAlignment="viewEnd"
+                    android:textSize="@dimen/main_text_size" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/location"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/main_text_size" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/location"
+                    android:textColor="@color/profile_info_txt_color"
+                    android:textAlignment="viewEnd"
+                    android:textSize="@dimen/main_text_size" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/grey" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bio"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/main_text_size" />
+
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tell_us_about_yourself"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/profile_info_txt_color"
+            android:textSize="15sp" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/grey" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/username"
-                android:textColor="@color/black"
-                android:textSize="@dimen/main_text_size" />
-
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:hint="@string/username"
-                android:textAlignment="viewEnd"
-                android:textSize="@dimen/main_text_size" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/gender"
-                android:textColor="@color/black"
-                android:textSize="@dimen/main_text_size" />
-
-            <TextView
-                android:id="@+id/gender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/gender"
-                android:textAlignment="viewEnd"
-                android:textSize="@dimen/main_text_size" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/birthday"
-                android:textColor="@color/black"
-                android:textSize="@dimen/main_text_size" />
-
-            <TextView
-                android:id="@+id/birthday"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/birthday"
-                android:textAlignment="viewEnd"
-                android:textSize="@dimen/main_text_size" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/location"
-                android:textColor="@color/black"
-                android:textSize="@dimen/main_text_size" />
-
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/location"
-                android:textAlignment="viewEnd"
-                android:textSize="@dimen/main_text_size" />
-        </TableRow>
-    </TableLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/grey" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/bio"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text_size" />
-
-    <TextView
-        android:id="@+id/bio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/tell_us_about_yourself"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:textSize="15sp" />
-
-</LinearLayout>
+</ScrollView>

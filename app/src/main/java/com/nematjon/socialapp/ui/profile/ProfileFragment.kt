@@ -2,6 +2,8 @@ package com.nematjon.socialapp.ui.profile
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -10,9 +12,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
@@ -27,6 +27,11 @@ class ProfileFragment : Fragment() {
     private lateinit var photo1: ImageView
     private lateinit var photo2: ImageView
     private lateinit var photo3: ImageView
+    private lateinit var username: TextView
+    private lateinit var gender: TextView
+    private lateinit var birthday: TextView
+    private lateinit var location: TextView
+    private lateinit var bio: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,11 +40,16 @@ class ProfileFragment : Fragment() {
     ): View? {
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
-        val username: TextView = root.findViewById(R.id.username)
-        val gender: TextView = root.findViewById(R.id.gender)
-        val birthday: TextView = root.findViewById(R.id.birthday)
-        val location: TextView = root.findViewById(R.id.location)
-        val bio: TextView = root.findViewById(R.id.bio)
+        username = root.findViewById(R.id.username)
+        username.setOnClickListener { openCustomAlertDialogListener(USERNAME) }
+        gender = root.findViewById(R.id.gender)
+        gender.setOnClickListener { openCustomAlertDialogListener(GENDER) }
+        birthday = root.findViewById(R.id.birthday)
+        birthday.setOnClickListener { openCustomAlertDialogListener(BIRTHDAY) }
+        location = root.findViewById(R.id.location)
+        location.setOnClickListener { openCustomAlertDialogListener(LOCATION) }
+        bio = root.findViewById(R.id.bio)
+        bio.setOnClickListener { openCustomAlertDialogListener(BIO) }
 
         photo1 = root.findViewById(R.id.photo_1)
         photo2 = root.findViewById(R.id.photo_2)
@@ -59,6 +69,89 @@ class ProfileFragment : Fragment() {
         photo3.setOnClickListener { onPhotoClickHandle(photo3) }
 
         return root
+    }
+
+    fun openCustomAlertDialogListener(title: String) {
+        val view: View = View.inflate(activity, R.layout.custom_dialog_layout, null)
+        val alertDialog: AlertDialog = AlertDialog.Builder(activity).create()
+        alertDialog.setTitle(title)
+
+        val txtView: EditText = view.findViewById(R.id.text_view)
+        txtView.visibility = View.GONE
+        val genderPickView: LinearLayout = view.findViewById(R.id.gender_pick_view)
+        genderPickView.visibility = View.GONE
+        val datePickerView: DatePicker = view.findViewById(R.id.datepicker_view)
+        datePickerView.visibility = View.GONE
+        val mapView: LinearLayout = view.findViewById(R.id.map_view)
+        mapView.visibility = View.GONE
+
+        val genderRadioGroup: RadioGroup = view.findViewById(R.id.gender_pick_rg)
+
+
+        when (title) {
+            USERNAME -> {
+                txtView.visibility = View.VISIBLE
+                txtView.setText(username.text)
+            }
+            BIO -> {
+                txtView.visibility = View.VISIBLE
+                txtView.setText(bio.text)
+            }
+            GENDER -> {
+                genderPickView.visibility = View.VISIBLE
+                when (gender.text) {
+                    getString(R.string.male) -> (genderRadioGroup.getChildAt(0) as RadioButton).isChecked =
+                        true
+                    getString(R.string.female) -> (genderRadioGroup.getChildAt(1) as RadioButton).isChecked =
+                        true
+                }
+            }
+            BIRTHDAY -> {
+                datePickerView.visibility = View.VISIBLE
+            }
+            LOCATION -> {
+                mapView.visibility = View.VISIBLE
+            }
+        }
+
+
+        alertDialog.setButton(
+            AlertDialog.BUTTON_POSITIVE,
+            "OK",
+            DialogInterface.OnClickListener { dialog, which ->
+                when (title) {
+                    USERNAME -> {
+                        username.text = txtView.text
+                    }
+                    BIO -> {
+                        bio.text = txtView.text
+                    }
+                    GENDER -> {
+                        val checkedGenderRadioButton: RadioButton =
+                            view.findViewById(genderRadioGroup.checkedRadioButtonId)
+                        gender.text = checkedGenderRadioButton.text
+                    }
+                    BIRTHDAY -> {
+                        val year = datePickerView.year
+                        val month = datePickerView.month
+                        val day = datePickerView.dayOfMonth
+                        birthday.text = String.format("%d-%02d-%02d", year, month + 1, day)
+                        //TODO: birthday.text
+                    }
+                    LOCATION -> {
+                        //TODO: location.text
+                    }
+                }
+            })
+
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEGATIVE,
+            "Cancel",
+            DialogInterface.OnClickListener { dialog, which -> alertDialog.dismiss() })
+
+        alertDialog.setView(view)
+        alertDialog.show()
+
     }
 
     private fun onPhotoClickHandle(imageView: ImageView) {
@@ -152,5 +245,11 @@ class ProfileFragment : Fragment() {
         const val PICK_IMAGE_2_REQUEST_CODE = 2
         const val PICK_IMAGE_3_REQUEST_CODE = 3
         const val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
+
+        const val USERNAME = "Username"
+        const val GENDER = "Gender"
+        const val BIRTHDAY = "Birthday"
+        const val LOCATION = "Location"
+        const val BIO = "Bio"
     }
 }
